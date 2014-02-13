@@ -7,6 +7,7 @@ class CreateTweets < ActiveRecord::Migration
     create_table :tweets do |t|
       t.string "tweet"
       t.integer "congress_member_id"
+
       t.timestamps
     end
   end

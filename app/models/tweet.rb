@@ -2,7 +2,7 @@ require_relative '../../db/config'
 
 
 class Tweet < ActiveRecord::Base
-  belongs_to :congress_member
+  belongs_to :congress_member,
 
 
 end
