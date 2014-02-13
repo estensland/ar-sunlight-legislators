@@ -17,16 +17,29 @@ class CongressMember < ActiveRecord::Base
     puts reps
   end
 
+  # def self.find_active_legislators(gender)
+  #   reps = []
+  #   senators = []
+  #   CongressMember.where(in_office: 1).each do |legislator|
+  #     senators << "#{legislator.gender}" if legislator.title == "Sen"
+  #     reps << "#{legislator.gender}" if legislator.title == "Rep"
+  #   end
+
+  #   puts "#{gender} Senators: #{senators.count(gender.upcase[0])} (#{self.percentage(senators, gender)}%)"
+  #   puts "#{gender} Representatives: #{reps.count(gender.upcase[0])} (#{self.percentage(reps, gender)}%)"
+  # end
+
+  # def self.percentage(legislators, gender)
+  #   (legislators.count(gender.upcase[0]) * 100/legislators.length)
+  # end
+
   def self.find_active_legislators(gender)
     reps = []
     senators = []
-    CongressMember.where(in_office: 1).each do |legislator|
-      senators << "#{legislator.gender}" if legislator.title == "Sen"
-      reps << "#{legislator.gender}" if legislator.title == "Rep"
-    end
-
-    puts "#{gender} Senators: #{senators.count(gender.upcase[0])} (#{self.percentage(senators, gender)}%)"
-    puts "#{gender} Representatives: #{reps.count(gender.upcase[0])} (#{self.percentage(reps, gender)}%)"
+    sen_count = CongressMember.where(in_office: 1, title: "Sen", gender: "#{gender.upcase[0]}").length
+    rep_count = CongressMember.where(in_office: 1, title: "Rep", gender: "#{gender.upcase[0]}").length
+    puts "#{gender} Senators: #{sen_count} (#{sen_count}%)"
+    puts "#{gender} Representatives: #{rep_count} (#{((rep_count.to_f/435.to_f)*100).round(0)}%)"
   end
 
   def self.percentage(legislators, gender)

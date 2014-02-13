@@ -19,7 +19,9 @@ p CongressMember.all.length
 
 # p CongressMember.where(in_office: 1)
 
-# CongressMember.find_active_legislators("male")
+CongressMember.find_active_legislators("male")
+CongressMember.find_active_legislators("female")
+
 
 CongressMember.states
 
