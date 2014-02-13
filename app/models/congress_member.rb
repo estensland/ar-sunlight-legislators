@@ -3,6 +3,13 @@ require_relative '../../db/config'
 
 class CongressMember < ActiveRecord::Base
 
+
+
+
+
+
+
+
   def self.find_by_state(state)
     reps = []
     senators = []
@@ -16,22 +23,6 @@ class CongressMember < ActiveRecord::Base
     puts "Representatives:"
     puts reps
   end
-
-  # def self.find_active_legislators(gender)
-  #   reps = []
-  #   senators = []
-  #   CongressMember.where(in_office: 1).each do |legislator|
-  #     senators << "#{legislator.gender}" if legislator.title == "Sen"
-  #     reps << "#{legislator.gender}" if legislator.title == "Rep"
-  #   end
-
-  #   puts "#{gender} Senators: #{senators.count(gender.upcase[0])} (#{self.percentage(senators, gender)}%)"
-  #   puts "#{gender} Representatives: #{reps.count(gender.upcase[0])} (#{self.percentage(reps, gender)}%)"
-  # end
-
-  # def self.percentage(legislators, gender)
-  #   (legislators.count(gender.upcase[0]) * 100/legislators.length)
-  # end
 
   def self.find_active_legislators(gender)
     reps = []
