@@ -31,5 +31,4 @@ CongressMember.total_numbers
 
 puts
 
-
 CongressMember.total_active
